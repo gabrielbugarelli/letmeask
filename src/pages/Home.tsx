@@ -9,23 +9,22 @@ import googleIconImg from '../assets/images/google-icon.svg';
 import logoImg from '../assets/images/logo.png';
 
 import '../styles/auth.scss'
+import { useContext } from 'react';
+import { AuthContext } from '../App';
 
 export const Home = () => {
 
   const navigate = useNavigate();
+
+  const { signWithGoogle } = useContext(AuthContext);
 
   /**
    * @author Gabriel Mendes
    * @descriptionLeva usuário para página de NewRoom.tsx
    */
   const handleCreateRoom = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    auth.signInWithPopup(provider).then( result => {
-      console.log(result);
-      navigate('/rooms/new');
-    })
-
+    signWithGoogle();
+    navigate('/rooms/new');
   }
 
 	return (
