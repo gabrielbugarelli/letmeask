@@ -4,7 +4,12 @@
   box-sizing: border-box;
 }
 
-body, input, button, textarea {
+body, button, textarea, input {
   font: 400 16px 'Roboto', sans-serif;
+  outline: none;
+}
+
+button {
   cursor: pointer;
+  font-weight: bold;
 }

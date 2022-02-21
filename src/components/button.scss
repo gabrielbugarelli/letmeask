@@ -1,0 +1,17 @@
+.button {
+  height: 50px;
+  background-color: #835afd;
+  border-radius: 8px;
+  border: none;
+  color: #F7FAFC;
+
+  transition: filter 0.2s;
+  &:not(:disabled):hover {
+    filter: brightness(0.7);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
