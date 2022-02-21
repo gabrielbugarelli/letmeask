@@ -62,6 +62,11 @@
       align-items: center;
     }
 
+    h2 {
+      margin-bottom: 1rem;
+      font-family: "Poppins", sans-serif;
+    }
+
     form {
       input {
         height: 50px;
@@ -75,6 +80,16 @@
       button, input {
         width: 100%;
       }
+    }
+  }
+
+  p {
+    font-size: 14px;
+    color: #F7FAFC;
+    margin-top: 1rem;
+
+    a {
+      color: #835afd
     }
   }
 
