@@ -4,8 +4,20 @@ import googleIconImg from '../assets/images/google-icon.svg';
 
 import '../styles/auth.scss'
 import { Button } from '../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
+
+  const navigate = useNavigate();
+
+  /**
+   * @author Gabriel Mendes
+   * @descriptionLeva usuário para página de NewRoom.tsx
+   */
+  const navigateToNewRoom = () => {
+    navigate('/rooms/new');
+  }
+
 	return (
 		<div id="page-auth">
 			<aside>
@@ -20,7 +32,7 @@ export const Home = () => {
         <div className='main-content'>
           <img src={logoImg} alt="letmeask" />
 
-          <button className='create-room'>
+          <button onClick={navigateToNewRoom} className='create-room'>
             <img src={googleIconImg} alt="Logo do google" />
             Crie a sua sala com o Google
           </button>

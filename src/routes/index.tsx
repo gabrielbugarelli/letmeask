@@ -13,7 +13,7 @@ export const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/new-room" element={<NewRoom />} />
+        <Route path="/rooms/new" element={<NewRoom />} />
       </Routes>
     </BrowserRouter>
   )

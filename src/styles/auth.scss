@@ -32,7 +32,7 @@
       color: #F7FAFC;
     }
 
-    @media(max-width: 720px) {
+    @media(max-width: 870px) {
       display: none;
     }
   }
@@ -59,6 +59,8 @@
     max-width: 320px;
 
     > img {
+      margin: auto;
+      width: 250px;
       align-items: center;
     }
 
@@ -89,7 +91,8 @@
     margin-top: 1rem;
 
     a {
-      color: #835afd
+      color: #835afd;
+      margin-left: 5px;
     }
   }
 
