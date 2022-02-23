@@ -1,20 +1,18 @@
 
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
-
 import  illustrationImg from '../assets/images/illustration.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 import logoImg from '../assets/images/logo.png';
+import { useAuth } from '../hooks/useAuth';
 
 import '../styles/auth.scss'
-import { useContext } from 'react';
-import { AuthContext } from '../App';
 
 export const Home = () => {
 
   const navigate = useNavigate();
 
-  const { user, signWithGoogle } = useContext(AuthContext);
+  const { user, signWithGoogle } = useAuth();
 
   /**
    * @author Gabriel Mendes
