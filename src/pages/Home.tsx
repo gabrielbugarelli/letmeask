@@ -16,14 +16,17 @@ export const Home = () => {
 
   const navigate = useNavigate();
 
-  const { signWithGoogle } = useContext(AuthContext);
+  const { user, signWithGoogle } = useContext(AuthContext);
 
   /**
    * @author Gabriel Mendes
    * @descriptionLeva usuário para página de NewRoom.tsx
    */
-  const handleCreateRoom = () => {
-    signWithGoogle();
+  const handleCreateRoom = async () => {
+    if(!user) {
+      await signWithGoogle();
+    }
+    
     navigate('/rooms/new');
   }
 
