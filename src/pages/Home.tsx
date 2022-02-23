@@ -2,8 +2,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
 
-import { firebase, auth, database} from '../services/firebaseConnection';
-
 import  illustrationImg from '../assets/images/illustration.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 import logoImg from '../assets/images/logo.png';
@@ -26,7 +24,7 @@ export const Home = () => {
     if(!user) {
       await signWithGoogle();
     }
-    
+
     navigate('/rooms/new');
   }
 
