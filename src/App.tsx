@@ -20,7 +20,7 @@ export const App = () => {
 
   // Recupera estado de autenticação do usuário
   useEffect(() => {
-    auth.onAuthStateChanged( user => {
+    const unsubscribe = auth.onAuthStateChanged( user => {
       if( user ) {
         const { uid, displayName, photoURL } = user;
         
@@ -35,6 +35,10 @@ export const App = () => {
         } as UserType);
       }
     })
+
+    return () => {
+      unsubscribe();
+    }
   }, [])
 
   const signWithGoogle = async () => {
