@@ -88,3 +88,18 @@
     }
   }
 }
+
+@media(max-width: 720px) {
+  .room-title {
+    justify-content: space-between;
+  }
+
+  .room-title, form{
+    padding: 1rem;
+  }
+
+  .form-footer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
