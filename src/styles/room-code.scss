@@ -9,6 +9,11 @@
 
   display: flex;
 
+  &:active {
+    border-width: 2px;
+    background-color: #F7FAFC;
+  }
+
   div {
     display: flex;
     justify-content: center;
