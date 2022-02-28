@@ -70,7 +70,7 @@ export const Room = () => {
           <div className="form-footer">
             { user ? (
               <div className="user-info">
-                <img src={user.avatar} alt={user.name}/>
+                <img src={user.avatar}/>
                 <span>{user.name}</span>
               </div>
             ) : (
