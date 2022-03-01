@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import '../styles/question.scss';
 
 type QuestionProps = {
@@ -6,9 +7,10 @@ type QuestionProps = {
     name: string;
     avatar: string;
   }
+  children?: ReactElement;
 }
 
-export const Question = ({ content, author }: QuestionProps) => {
+export const Question = ({ content, author, children }: QuestionProps) => {
   return (
     <div className="question">
       <p>{content}</p>
@@ -19,7 +21,9 @@ export const Question = ({ content, author }: QuestionProps) => {
           <span>{author.name}</span>
         </div>
 
-        <div></div>
+        <div>
+          {children}
+        </div>
       </footer>
     </div>
   )
