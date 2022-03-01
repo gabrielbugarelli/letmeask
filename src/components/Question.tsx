@@ -15,7 +15,7 @@ export const Question = ({ content, author }: QuestionProps) => {
 
       <footer>
         <div className="user-info">
-          <img src={author.avatar} alt={author.name} />
+          <img src={author.avatar} />
           <span>{author.name}</span>
         </div>
 
