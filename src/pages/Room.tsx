@@ -1,70 +1,27 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
 import { useAuth } from '../hooks/useAuth';
 import { database } from '../services/firebaseConnection';
+import { useParams } from 'react-router-dom';
 
 import logoImg from '../assets/images/logo.svg';
 
 import '../styles/room.scss';
-
-type FirebaseQuestions = Record<string, {
-  author: {
-    name: string
-    avatar: string
-  }
-  content: string
-  isAnswered: boolean
-  isHighlighted: boolean
-}>
-
-type QuestionType = {
-  id: string
-  author: {
-    name: string
-    avatar: string
-  }
-  content: string
-  isAnswered: boolean
-  isHighlighted: boolean
-}
+import { useRoom } from '../hooks/useRoom';
 
 type RoomParams = {
   id: string;
 }
 
 export const Room = () => {
-  const { user } = useAuth();
   const params = useParams<RoomParams>();
   const roomId = params.id ? params.id : '';
-
   const [ newQuestion, setNewQuestion ] = useState('');
-  const [ questions, setQuestions ] = useState<QuestionType[]>([]);
-  const [ title, setTitle ] = useState();
-
-  useEffect(() => {
-    const roomRef = database.ref(`/rooms/${roomId}`);
-
-    roomRef.on('value', room => {
-      const databaseRoom = room.val();
-      const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {};
-
-      const parsedQuestions = Object.entries(firebaseQuestions).map(([key, value]) => {
-        return {
-          id: key,
-          content: value.content,
-          author: value.author,
-          isAnswered: value.isAnswered,
-          isHighlighted: value.isHighlighted
-        }
-      });
-
-      setTitle(databaseRoom.title);
-      setQuestions(parsedQuestions)
-    })
-  }, [roomId])
+  
+  const { user } = useAuth();
+  const { questions, title } = useRoom(roomId);
 
   const handleSendQuestion = async (event: FormEvent) => {
     event.preventDefault();
