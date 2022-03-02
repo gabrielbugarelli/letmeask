@@ -1,20 +1,22 @@
 import { Button } from '../components/Button';
 import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useRoom } from '../hooks/useRoom';
+import { database } from '../services/firebaseConnection';
 
 import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
 
 import '../styles/room.scss';
-import { database } from '../services/firebaseConnection';
 
 type RoomParams = {
   id: string;
 }
 
 export const AdminRoom = () => {
+
+  const navigate = useNavigate();
   const params = useParams<RoomParams>();
   const roomId = params.id ? params.id : '';
   
@@ -28,6 +30,14 @@ export const AdminRoom = () => {
     }
   }
 
+  const handleEndRoom = async () => {
+    await database.ref(`rooms/${roomId}`).update({
+      endedAt: new Date()
+    });
+
+    navigate('/');
+  }
+
   return (
     <div id="page-room">
       <header>
@@ -36,7 +46,12 @@ export const AdminRoom = () => {
 
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined>Encerrar</Button>
+            <Button 
+              isOutlined
+              onClick={handleEndRoom}
+            >
+              Encerrar
+            </Button>
           </div>
         </div>
       </header>
