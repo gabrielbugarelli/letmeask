@@ -100,6 +100,8 @@ export const Room = () => {
                 key={question.id}
                 author={question.author}
                 content={question.content}
+                isAnswered={question.isAnswered}
+                isHighlighted={question.isHighlighted}
               >
                 <button
                   onClick={() => handleLikeQuestion(question.id, question.likeId)}

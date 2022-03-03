@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 import '../styles/question.scss';
 
 type QuestionProps = {
@@ -7,12 +7,14 @@ type QuestionProps = {
     name: string;
     avatar: string;
   }
-  children?: ReactElement;
+  children?: ReactNode;
+  isAnswered: boolean;
+  isHighlighted: boolean;
 }
 
-export const Question = ({ content, author, children }: QuestionProps) => {
+export const Question = ({ content, author, children, isAnswered, isHighlighted }: QuestionProps) => {
   return (
-    <div className="question">
+    <div className={`question ${isAnswered ? 'answered' : ''} ${isHighlighted ? 'highlighted' : ''}`}>
       <p>{content}</p>
 
       <footer>
