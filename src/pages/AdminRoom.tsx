@@ -94,19 +94,25 @@ export const AdminRoom = () => {
                 isAnswered={question.isAnswered}
                 isHighlighted={question.isHighlighted}
               >
-                <button
-                  type='button'
-                  onClick={() => handleCheckQuestionAsAnswered(question.id)}
-                >
-                  <img src={checkImg} alt="Responder pergunta" />
-                </button>
+                {
+                  !question.isAnswered && (
+                    <>
+                      <button
+                        type='button'
+                        onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                      >
+                        <img src={checkImg} alt="Responder pergunta" />
+                      </button>
 
-                <button
-                  type='button'
-                  onClick={() => handleHighlightQuestion(question.id)}
-                >
-                  <img src={answerImg} alt="Destacar pergunta" />
-                </button>
+                      <button
+                        type='button'
+                        onClick={() => handleHighlightQuestion(question.id)}
+                      >
+                        <img src={answerImg} alt="Destacar pergunta" />
+                      </button>
+                    </>
+                  )
+                }
 
                 <button
                   type='button'
